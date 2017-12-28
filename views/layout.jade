@@ -18,7 +18,26 @@ html
     link(href='/stylesheets/agency.min.css', rel='stylesheet')
     //link(rel='stylesheet', href='/stylesheets/style.css')
   body#page-top
-  
+    // Navigation
+    nav#mainNav.navbar.navbar-expand-lg.navbar-dark.fixed-top
+      .container
+        a.navbar-brand.js-scroll-trigger(href='#page-top') MultiLingua School
+        button.navbar-toggler.navbar-toggler-right(type='button', data-toggle='collapse', data-target='#navbarResponsive', aria-controls='navbarResponsive', aria-expanded='false', aria-label='Toggle navigation')
+          | Menu
+          i.fa.fa-bars
+        #navbarResponsive.collapse.navbar-collapse
+          ul.navbar-nav.text-uppercase.ml-auto
+            li.nav-item
+              a.nav-link.js-scroll-trigger(href='#services') Languages
+            li.nav-item
+              a.nav-link.js-scroll-trigger(href='#portfolio') Courses
+            li.nav-item
+              a.nav-link.js-scroll-trigger(href='#about') About
+            li.nav-item
+              a.nav-link.js-scroll-trigger(href='#team') Team
+            li.nav-item
+              a.nav-link.js-scroll-trigger(href='#contact') Contact
+
     block content
 
     // Bootstrap core JavaScript
