@@ -1,10 +1,75 @@
 extends layout
 
 block content
-    // Header
-    header.masthead
-      .container
-        .intro-text
-          .intro-lead-in Welcome To Our School!
-          .intro-heading.text-uppercase It's Nice To Meet You
-          a.btn.btn-primary.btn-xl.text-uppercase.js-scroll-trigger(href='#services') Learn More
+    // Regular courses
+    section#regular_courses 
+      // English
+      .container#regular_english.bg-light.mb-5
+        .row
+          .col-lg-12.text-center
+            h2.section-heading.text-uppercase REGULAR COURSE
+            h3.section-subheading.text-muted For those who wish to learn, travel, meet, socialise, and talk on the phone, face situations and activities in daily life.
+        .row
+          .col-md-6
+            h4.languages-heading English
+            p
+              | Regular English Course is the most popular course in MultiLingua School. Our general English courses are applicable to all levels. They are held by qualified, mother tongue teachers who have great experience in the teaching. During the course, the four language abilities (reading, writing, speaking and listening) will be developed. The study of grammar, vocabulary and pronunciation will also be included. The course programme is decided on by the teacher according to the level of the individual student or group.
+            ul.list-inline
+              | Key characteristics:
+              li Start Date: 5th March 2018
+              li No of hours: 48/semester
+              li Levels: A1, A2, B1, B2, C1, C2
+              li Classes: 2 x 90 min/week or 1 x 180 min/week
+              li Price: 950.00 PLN/semester
+          .col-md-6
+            span
+              img.img-responsive.center-block.mt-4(src='images/courses/eng_levels.jpg', alt='eng_levels')
+            // h4.languages-heading German
+            // p.text-muted
+        .row  
+          .col-md-12.text-center
+            a.btn.btn-primary.btn-xl.text-uppercase.js-scroll-trigger.m-3(href='#languages') Sign Up!
+      // German
+      .container#regular_german.bg-white.mb-5
+        .row
+          .col-md-6
+            h4.languages-heading German
+            p
+              | Regular English Course is the most popular course in MultiLingua School. Every year...
+            ul.list-inline
+              | Key characteristics:
+              li Start Date: 5th March 2018
+              li No of hours: 48/semester
+              li Levels: A1, A2, B1, B2, C1, C2
+              li Classes: 2 x 90 min/week or 1 x 180 min/week
+              li Price: 950.00 PLN/semester
+          .col-md-6
+            span(width='500', height='350')
+              img.img-responsive.center-block.mt-4(src='images/courses/ger_levels.jpg', alt='ger_levels', width='auto')
+            // h4.languages-heading German
+            // p.text-muted
+        .row  
+          .col-md-12.text-center
+            a.btn.btn-primary.btn-xl.text-uppercase.js-scroll-trigger.m-3(href='#languages') Sign Up!
+      // Spanish
+      .container#regular_spanish.bg-light.mb-5
+        .row
+          .col-md-6
+            h4.languages-heading Spanish
+            p
+              | Regular English Course is the most popular course in MultiLingua School. Every year...
+            ul.list-inline
+              | Key characteristics:
+              li Start Date: 5th March 2018
+              li No of hours: 48/semester
+              li Levels: A1, A2, B1, B2, C1, C2
+              li Classes: 2 x 90 min/week or 1 x 180 min/week
+              li Price: 950.00 PLN/semester
+          .col-md-6
+            span(width='500', height='350')
+              img.img-responsive.center-block.mt-4(src='images/courses/spa_levels.jpg', alt='spa_levels', width='auto')
+            // h4.languages-heading German
+            // p.text-muted
+        .row  
+          .col-md-12.text-center
+            a.btn.btn-primary.btn-xl.text-uppercase.js-scroll-trigger.m-3(href='#languages') Sign Up!
