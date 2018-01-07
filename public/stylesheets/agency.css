@@ -519,3 +519,23 @@ section#regular_courses {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;}
+
+section#business_courses {
+  background-image: url('../images/courses/busiess_course_bg.jpg');
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;}
+  
+section#intensive_courses {
+  background-image: url('../images/courses/intensive_course_bg.jpg');
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;}
