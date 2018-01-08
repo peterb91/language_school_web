@@ -16,7 +16,7 @@ html
     link(href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700', rel='stylesheet', type='text/css')
     // Custom styles for this template
     link(href='/stylesheets/agency.min.css', rel='stylesheet')
-    //link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
   body#page-top
     // Navigation
     nav#mainNav.navbar.navbar-expand-lg.navbar-dark.fixed-top
@@ -30,13 +30,24 @@ html
             li.nav-item
               a.nav-link.js-scroll-trigger(href='/#languages') Languages
             li.nav-item
-              a.nav-link.js-scroll-trigger(href='/#courses') Courses
+              // a.nav-link.js-scroll-trigger(href='/#courses') Courses
+              .btn-group
+                a#courses_btn.nav-link.js-scroll-trigger(href='/#courses') Courses
+                a.nav-link.btn.dropdown-toggle.dropdown-toggle-split(data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                  span.sr-only Toggle Dropdown
+                .dropdown-menu
+                  a.nav-link.dropdown-item(href='/regular') Regular
+                  a.nav-link.dropdown-item(href='/business') Business
+                  a.nav-link.dropdown-item(href='/intensive') Intensive
             li.nav-item
               a.nav-link.js-scroll-trigger(href='/#about') About
             li.nav-item
               a.nav-link.js-scroll-trigger(href='/#team') Team
             li.nav-item
               a.nav-link.js-scroll-trigger(href='/#contact') Contact
+            li.nav-item
+              a.nav-link.js-scroll-trigger(href='/signin') 
+                span#signin_btn Sign in
 
   block content
 
