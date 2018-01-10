@@ -1,8 +1,38 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
+section#regular_courses {
+  background-image: url('../images/courses/regular_course_bg.jpg');
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;}
 
-a {
-  color: #00B7FF;
-}
+section#business_courses {
+  background-image: url('../images/courses/business_course_bg.jpg');
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;}
+
+section#intensive_courses {
+  background-image: url('../images/courses/intensive_course_bg.jpg');
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;}
+
+span#signin_btn {
+  border-bottom: 3px solid #fed136;}
+
+.dropdown-menu {
+  background: #212529;}
+
+a.dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.1);}

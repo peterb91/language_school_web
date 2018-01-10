@@ -1,0 +1,8 @@
+// Styling for the intensive_courses
+section#intensive_courses {
+    background-image: url('/images/courses/intensive_course_bg.jpg');
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    @include background-cover;
+}

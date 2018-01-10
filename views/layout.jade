@@ -1,7 +1,87 @@
 doctype html
 html
   head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    meta(name='description', content='')
+    meta(name='author', content='')
     title= title
+    // Bootstrap core CSS
+    link(href='/stylesheets/bootstrap.min.css', rel='stylesheet')
+    // Custom fonts for this template
+    link(href='/vendor/font-awesome/css/font-awesome.min.css', rel='stylesheet', type='text/css')
+    link(href='https://fonts.googleapis.com/css?family=Montserrat:400,700', rel='stylesheet', type='text/css')
+    link(href='https://fonts.googleapis.com/css?family=Kaushan+Script', rel='stylesheet', type='text/css')
+    link(href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic', rel='stylesheet', type='text/css')
+    link(href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700', rel='stylesheet', type='text/css')
+    // Custom styles for this template
+    link(href='/stylesheets/agency.min.css', rel='stylesheet')
     link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+  body#page-top
+    // Navigation
+    nav#mainNav.navbar.navbar-expand-lg.navbar-dark.fixed-top
+      .container
+        a.navbar-brand.js-scroll-trigger(href='/') MultiLingua School
+        button.navbar-toggler.navbar-toggler-right(type='button', data-toggle='collapse', data-target='#navbarResponsive', aria-controls='navbarResponsive', aria-expanded='false', aria-label='Toggle navigation')
+          | Menu
+          i.fa.fa-bars
+        #navbarResponsive.collapse.navbar-collapse
+          ul.navbar-nav.text-uppercase.ml-auto
+            li.nav-item
+              a.nav-link.js-scroll-trigger(href='/#languages') Languages
+            li.nav-item
+              // a.nav-link.js-scroll-trigger(href='/#courses') Courses
+              .btn-group
+                a#courses_btn.nav-link.js-scroll-trigger(href='/#courses') Courses
+                a.nav-link.btn.dropdown-toggle.dropdown-toggle-split(data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                  span.sr-only Toggle Dropdown
+                .dropdown-menu
+                  a.nav-link.dropdown-item(href='/regular') Regular
+                  a.nav-link.dropdown-item(href='/business') Business
+                  a.nav-link.dropdown-item(href='/intensive') Intensive
+            li.nav-item
+              a.nav-link.js-scroll-trigger(href='/#about') About
+            li.nav-item
+              a.nav-link.js-scroll-trigger(href='/#team') Team
+            li.nav-item
+              a.nav-link.js-scroll-trigger(href='/#contact') Contact
+            li.nav-item
+              a.nav-link.js-scroll-trigger(href='/signin') 
+                span#signin_btn Sign in
+
+  block content
+
+  // Bootstrap core JavaScript
+  script(src='/vendor/jquery/jquery.min.js')
+  script(src='/javascripts/bootstrap.bundle.min.js')
+  // Plugin JavaScript
+  script(src='/vendor/jquery-easing/jquery.easing.min.js')
+  // Contact form JavaScript
+  script(src='/javascripts/jqBootstrapValidation.js')
+  script(src='/javascripts/contact_me.js')
+  // Custom scripts for this template
+  script(src='/javascripts/agency.min.js')
+
+  // Footer
+  footer
+    .container
+      .row
+        .col-md-4
+          span.copyright Copyright © MultiLingua School Website 2017 All rights reserved to PB.
+        .col-md-4
+          ul.list-inline.social-buttons
+            li.list-inline-item
+              a(href='https://twitter.com/?lang=pl')
+                i.fa.fa-twitter
+            li.list-inline-item
+              a(href='https://pl-pl.facebook.com/')
+                i.fa.fa-facebook
+            li.list-inline-item
+              a(href='https://pl.linkedin.com/')
+                i.fa.fa-linkedin
+        .col-md-4
+          ul.list-inline.quicklinks
+            li.list-inline-item
+              a(href='#') Privacy Policy
+            li.list-inline-item
+              a(href='#') Terms of Use

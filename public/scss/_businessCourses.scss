@@ -1,0 +1,8 @@
+// Styling for the business_courses
+section#business_courses {
+    background-image: url('/images/courses/business_course_bg.jpg');
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    @include background-cover;
+}
