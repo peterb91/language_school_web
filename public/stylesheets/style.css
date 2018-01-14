@@ -28,7 +28,7 @@ section#intensive_courses {
   -o-background-size: cover;
   background-size: cover;}
 
-span#signin_btn {
+span#signin_btn, #logout_btn {
   border-bottom: 3px solid #fed136;}
 
 .dropdown-menu {
@@ -38,4 +38,7 @@ a.dropdown-item:hover {
   background: rgba(255, 255, 255, 0.1);}
 
 .profileNav {
-  height: 56px !important;}
+  height: 56px;}
+
+#search_btn {
+  padding-top: 8px;}

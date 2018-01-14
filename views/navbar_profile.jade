@@ -2,9 +2,9 @@ body#page-top.fixed-nav.bg-dark
   // Navigation of user profile page
   nav#mainNav.profileNav.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top
     a.navbar-brand.js-scroll-trigger(href='/') MultiLingua School
-    button.navbar-toggler.navbar-toggler-right(type='button', data-toggle='collapse', data-target='#navbarResponsive', aria-controls='navbarResponsive', aria-expanded='false', aria-label='Toggle navigation')
+    button.navbar-toggler.navbar-toggler-right.bg-dark(type='button', data-toggle='collapse', data-target='#navbarResponsive', aria-controls='navbarResponsive', aria-expanded='false', aria-label='Toggle navigation')
       span.navbar-toggler-icon
-    #navbarResponsive.collapse.navbar-collapse
+    #navbarResponsive.collapse.navbar-collapse.bg-dark
       ul#exampleAccordion.navbar-nav.navbar-sidenav
         li.nav-item(data-toggle='tooltip', data-placement='right', title='Dashboard')
           a.nav-link(href='index.html')
@@ -115,7 +115,7 @@ body#page-top.fixed-nav.bg-dark
               span.badge.badge-pill.badge-warning 6 New
             span.indicator.text-warning.d-none.d-lg-block
               i.fa.fa-fw.fa-circle
-          .dropdown-menu(aria-labelledby='alertsDropdown')
+          .dropdown-menu.bg-light(aria-labelledby='alertsDropdown')
             h6.dropdown-header New Alerts:
             .dropdown-divider
             a.dropdown-item(href='#')
@@ -146,7 +146,7 @@ body#page-top.fixed-nav.bg-dark
               | View all alerts
         li.nav-item
           form.form-inline.my-2.my-lg-0.mr-lg-2
-            .input-group
+            #search_btn.input-group
               input.form-control(type='text', placeholder='Search for...')
               span.input-group-btn
                 button.btn.btn-primary(type='button')
@@ -154,5 +154,6 @@ body#page-top.fixed-nav.bg-dark
         li.nav-item
           a.nav-link(data-toggle='modal', data-target='#exampleModal')
             i.fa.fa-fw.fa-sign-out
-            | Logout
+            span#logout_btn
+              | Logout
   
