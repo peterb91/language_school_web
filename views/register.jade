@@ -1,48 +1,52 @@
-doctype html
-html(lang='en')
+extends layout
 
-  head
-    meta(charset='utf-8')
-    meta(http-equiv='X-UA-Compatible', content='IE=edge')
-    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
-    meta(name='description', content='')
-    meta(name='author', content='')
-
-    title SB Admin - Start Bootstrap Template
-
-    include includes/css/core.jade
-
-    include includes/css/custom.jade
-
-  body.bg-dark
-    .container
-      .card.card-register.mx-auto.mt-5
-        .card-header
-          | Register an Account
-        .card-body
-          form
+block content
+  body#page-top.register_body.background-cover
+    .container(style="min-height: 800px")
+      .card.card-register.mx-auto.register_window
+        .card-header.bg-dark.text-white
+          | Register for a course
+        .card-body.bg-light
+          form(method="post", action="")
             .form-group
               .form-row
                 .col-md-6
                   label(for='exampleInputName') First name
-                  input#exampleInputName.form-control(type='text', aria-describedby='nameHelp', placeholder='Enter first name')
+                  input#exampleInputName.form-control(name="first_name", type='text', aria-describedby='nameHelp', placeholder='Enter first name')
                 .col-md-6
                   label(for='exampleInputLastName') Last name
-                  input#exampleInputLastName.form-control(type='text', aria-describedby='nameHelp', placeholder='Enter last name')
+                  input#exampleInputLastName.form-control(name="last_name", type='text', aria-describedby='nameHelp', placeholder='Enter last name')
+              .form-row
+                .col-md-6
+                  label(for='languageInput') Language
+                  select#languageInput.form-control(name="language", type='text', aria-describedby='nameHelp', placeholder='Choose a language')
+                    option English
+                    option German
+                    option Spanish
+                .col-md-6
+                  label(for='languageLevel') Level
+                  select#languageLevel.form-control(name="level", type='text', aria-describedby='nameHelp', placeholder='Choose a level')
+                    option A1
+                    option A2
+                    option B1
+                    option B2
+                    option C1
+                    option C2
+            h6
+              | Register an Account      
             .form-group
               label(for='exampleInputEmail1') Email address
-              input#exampleInputEmail1.form-control(type='email', aria-describedby='emailHelp', placeholder='Enter email')
+              input#exampleInputEmail1.form-control(name="login", type='email', aria-describedby='emailHelp', placeholder='Enter email')
             .form-group
               .form-row
                 .col-md-6
                   label(for='exampleInputPassword1') Password
-                  input#exampleInputPassword1.form-control(type='password', placeholder='Password')
+                  input#exampleInputPassword1.form-control(name="password", type='password', placeholder='Password')
                 .col-md-6
                   label(for='exampleConfirmPassword') Confirm password
-                  input#exampleConfirmPassword.form-control(type='password', placeholder='Confirm password')
+                  input#exampleConfirmPassword.form-control(name="confirm_password", type='password', placeholder='Confirm password')
             a.btn.btn-primary.btn-block(href='login.html') Register
           .text-center
-            a.d-block.small.mt-3(href='login.html') Login Page
-            a.d-block.small(href='forgot-password.html') Forgot Password?
+            a.d-block.small.mt-3(href='/login') Login Page
+            a.d-block.small(href='/forgot_password') Forgot Password?
 
-    include includes/js/core.jade

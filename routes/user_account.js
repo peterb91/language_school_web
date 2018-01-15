@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET regular course page. */
 router.get('/', function(req, res, next) {
-  res.render('user_profile', { title: 'MultiLingua - user profile' });
+  res.render('account', { title: 'MultiLingua - user account' });
 });
 
 module.exports = router;

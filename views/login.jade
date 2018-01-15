@@ -1,40 +1,25 @@
-doctype html
-html(lang='en')
+extends layout
 
-  head
-    meta(charset='utf-8')
-    meta(http-equiv='X-UA-Compatible', content='IE=edge')
-    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
-    meta(name='description', content='')
-    meta(name='author', content='')
-
-    title SB Admin - Start Bootstrap Template
-
-    include includes/css/core.jade
-
-    include includes/css/custom.jade
-
-  body.bg-dark
-    .container
-      .card.card-login.mx-auto.mt-5
-        .card-header
+block content
+  body#page-top.login_body.background-cover
+    .container.d-flex(style="min-height: 800px")
+      .card.card-login.mx-auto.login_window
+        .card-header.bg-dark.text-white
           | Login
-        .card-body
-          form
+        .card-body.bg-light
+          form(method="get", action="")
             .form-group
               label(for='exampleInputEmail1') Email address
-              input#exampleInputEmail1.form-control(type='email', aria-describedby='emailHelp', placeholder='Enter email')
+              input#exampleInputEmail1.form-control(name="email", type='email', aria-describedby='emailHelp', placeholder='Enter email')
             .form-group
               label(for='exampleInputPassword1') Password
-              input#exampleInputPassword1.form-control(type='password', placeholder='Password')
+              input#exampleInputPassword1.form-control(name="password", type='password', placeholder='Password')
             .form-group
               .form-check
                 label.form-check-label
                   input.form-check-input(type='checkbox')
                   |                   Remember Password
-            a.btn.btn-primary.btn-block(href='index.html') Login
+            a.btn.btn-primary.btn-block(type="submit", href='index.html') Login
           .text-center
-            a.d-block.small.mt-3(href='register.html') Register an Account
-            a.d-block.small(href='forgot-password.html') Forgot Password?
-
-    include includes/js/core.jade
+            a.d-block.small.mt-3(href='/register') Register an Account
+            a.d-block.small(href='/forgot_password') Forgot Password?
