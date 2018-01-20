@@ -14,7 +14,7 @@ block content
         .row
           .col-lg-12
             h4 Select files you want to send to your teacher
-            form.(method='post', enctype='multipart/form-data')
+            form(method='post', enctype='multipart/form-data')
               input#files(type='file', name='files', multiple='multiple')
               p(style='text-align: left; margin-top: 20px;')
                 input.btn.btn-lg.btn-primary(type='submit', value='Upload Files')
