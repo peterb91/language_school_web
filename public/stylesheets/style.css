@@ -1,3 +1,5 @@
+/* Styling courses subpages */
+
 section#regular_courses {
   background-image: url('../images/courses/regular_course_bg.jpg');
   background-repeat: no-repeat;
@@ -28,11 +30,34 @@ section#intensive_courses {
   -o-background-size: cover;
   background-size: cover;}
 
-span#signin_btn {
+span#signin_btn, #logout_btn {
   border-bottom: 3px solid #fed136;}
+
+/* Styling dropdow menu for courses */
 
 .dropdown-menu {
   background: #212529;}
 
 a.dropdown-item:hover {
   background: rgba(255, 255, 255, 0.1);}
+
+#search_btn {
+  padding-top: 8px;}
+
+/* Styling logi template */
+.login_body, .register_body {
+  background-image: url('/images/header-bg.jpg');
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;}
+
+.background-cover {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;}
+
+.login_window, .register_window {
+  margin-top: 100px;
+  margin-bottom: auto;
+  width: 100%;}

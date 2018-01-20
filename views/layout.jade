@@ -16,41 +16,22 @@ html
     link(href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700', rel='stylesheet', type='text/css')
     // Custom styles for this template
     link(href='/stylesheets/agency.min.css', rel='stylesheet')
+    // Custom styles for admin template
+    link(href='/stylesheets/sb-admin.css', rel='stylesheet')
+    // Page level plugin CSS
+    link(href='/vendor/datatables/dataTables.bootstrap4.css', rel='stylesheet')
+    // Custom css styles
     link(rel='stylesheet', href='/stylesheets/style.css')
-  body#page-top
-    // Navigation
-    nav#mainNav.navbar.navbar-expand-lg.navbar-dark.fixed-top
-      .container
-        a.navbar-brand.js-scroll-trigger(href='/') MultiLingua School
-        button.navbar-toggler.navbar-toggler-right(type='button', data-toggle='collapse', data-target='#navbarResponsive', aria-controls='navbarResponsive', aria-expanded='false', aria-label='Toggle navigation')
-          | Menu
-          i.fa.fa-bars
-        #navbarResponsive.collapse.navbar-collapse
-          ul.navbar-nav.text-uppercase.ml-auto
-            li.nav-item
-              a.nav-link.js-scroll-trigger(href='/#languages') Languages
-            li.nav-item
-              // a.nav-link.js-scroll-trigger(href='/#courses') Courses
-              .btn-group
-                a#courses_btn.nav-link.js-scroll-trigger(href='/#courses') Courses
-                a.nav-link.btn.dropdown-toggle.dropdown-toggle-split(data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-                  span.sr-only Toggle Dropdown
-                .dropdown-menu
-                  a.nav-link.dropdown-item(href='/regular') Regular
-                  a.nav-link.dropdown-item(href='/business') Business
-                  a.nav-link.dropdown-item(href='/intensive') Intensive
-            li.nav-item
-              a.nav-link.js-scroll-trigger(href='/#about') About
-            li.nav-item
-              a.nav-link.js-scroll-trigger(href='/#team') Team
-            li.nav-item
-              a.nav-link.js-scroll-trigger(href='/#contact') Contact
-            li.nav-item
-              a.nav-link.js-scroll-trigger(href='/signin') 
-                span#signin_btn Sign in
 
+  block navigation
+  // Navigation bar...
+  
   block content
+  // Content of requested template...
 
+  // Scroll to Top Button
+  a.scroll-to-top.rounded(href='#page-top')
+    i.fa.fa-angle-up
   // Bootstrap core JavaScript
   script(src='/vendor/jquery/jquery.min.js')
   script(src='/javascripts/bootstrap.bundle.min.js')
@@ -61,9 +42,18 @@ html
   script(src='/javascripts/contact_me.js')
   // Custom scripts for this template
   script(src='/javascripts/agency.min.js')
+  // Custom scripts for admin template
+  script(src='/javascripts/sb-admin.min.js')
+  // Page level plugin JavaScript
+  script(src='/vendor/chart.js/Chart.min.js')
+  script(src='/vendor/datatables/jquery.dataTables.js')
+  script(src='/vendor/datatables/dataTables.bootstrap4.js')
+  // Custom scripts for this page
+  script(src='/javascripts/sb-admin-datatables.min.js')
+  script(src='/javascripts/sb-admin-charts.min.js')
 
   // Footer
-  footer
+  footer.bg-white
     .container
       .row
         .col-md-4

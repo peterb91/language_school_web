@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  body#page-top.login_body.background-cover
+    .container.d-flex(style="min-height: 800px")
+      .card.card-login.mx-auto.login_window
+        .card-header.bg-dark.text-white
+          | Login
+          a.navbar-brand.js-scroll-trigger.float-right.pt-0.pb-0(href='/', style="font-family: 'Kaushan Script','Helvetica Neue',Helvetica,Arial,cursive;") MultiLingua School
+        .card-body.bg-light
+          form(method="get", action="")
+            .form-group
+              label(for='exampleInputEmail1') Email address
+              input#exampleInputEmail1.form-control(name="email", type='email', aria-describedby='emailHelp', placeholder='Enter email')
+            .form-group
+              label(for='exampleInputPassword1') Password
+              input#exampleInputPassword1.form-control(name="password", type='password', placeholder='Password')
+            .form-group
+              .form-check
+                label.form-check-label
+                  input.form-check-input(type='checkbox')
+                  |                   Remember Password
+            a.btn.btn-primary.btn-block(type="submit", href='index.html') Login
+          .text-center
+            a.d-block.small.mt-3(href='/register') Register an Account
+            a.d-block.small(href='/forgot_password') Forgot Password?

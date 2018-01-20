@@ -1,0 +1,55 @@
+extends layout
+
+block navigation
+  include navbar_profile_user.jade
+
+block content
+    .content-wrapper
+      .container-fluid
+        // Breadcrumbs
+        ol.breadcrumb
+          li.breadcrumb-item Supporting Files
+            a(href='#') 
+          li.breadcrumb-item.active Download File
+        // List of files to download
+        .row(style="min-height: 992px;")
+          .card.mb-auto.mx-auto(style="min-width: 800px;")
+            .card-header.bg-dark.text-white
+              i.fa.fa-table
+              |  List of supporting materials (books, exercises etc.)
+            .card-body
+              .table-responsive
+              table#dataTable.table.table-bordered(width='100%', cellspacing='0')
+                thead
+                  tr
+                    th File name
+                    th Date 
+                    th Download link
+                tfoot
+                  tr
+                    th File name
+                    th Date 
+                    th Download link
+                tbody
+                  tr
+                    td Chapter 3
+                    td 2017/04/25
+                    td Link
+                  tr
+                    td Exercises 2.2-2.9
+                    td 2017/07/25
+                    td Link
+                  tr
+                    td Eng_Workbook B1
+                    td 2018/01/12
+                    td Link
+                  tr
+                    td Essey
+                    td 2017/03/29
+                    td Link
+            .card-footer.small.text-muted.bg-dark
+              | Updated yesterday at 11:59 PM
+        
+      
+  
+  

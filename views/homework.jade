@@ -1,0 +1,27 @@
+extends layout
+
+block navigation
+  include navbar_profile_user.jade
+
+block content
+    .content-wrapper
+      .container-fluid
+        // Breadcrumbs
+        ol.breadcrumb
+          li.breadcrumb-item Homework Page
+            a(href='#') 
+          li.breadcrumb-item.active Upload Files
+        .row
+          .col-lg-12
+            h4 Select files you want to send to your teacher
+            form(method='post', enctype='multipart/form-data')
+              input#files(type='file', name='files', multiple='multiple')
+              p(style='text-align: left; margin-top: 20px;')
+                input.btn.btn-lg.btn-primary(type='submit', value='Upload Files')
+        // you need to include the ShieldUI CSS and JS assets in order for the Upload widget to work
+link(rel='stylesheet', type='text/css', href='http://www.shieldui.com/shared/components/latest/css/light-bootstrap/all.min.css')
+script(type='text/javascript', src='http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js')
+script(type='text/javascript').
+  jQuery(function ($) {
+      $("#files").shieldUpload();
+      });
