@@ -1,0 +1,244 @@
+body#page-top.fixed-nav.bg-dark
+  -if (user.role == "teacher")
+    // Navigation of admin profile page
+    nav#mainNav.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top
+      nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top.navbar-shrink
+        a.navbar-brand.js-scroll-trigger(href='/') MultiLingua School
+        button.navbar-toggler.navbar-toggler-right.bg-dark(type='button', data-toggle='collapse', data-target='#navbarResponsive', aria-controls='navbarResponsive', aria-expanded='false', aria-label='Toggle navigation')
+          span.navbar-toggler-icon
+        #navbarResponsive.collapse.navbar-collapse
+          ul#exampleAccordion.navbar-nav.navbar-sidenav
+            li.nav-item(data-toggle='tooltip', data-placement='right', title='Students')
+              a.nav-link(href='/students')
+                i.fa.fa-fw.fa-table
+                span.nav-link-text
+                  | Students
+            li.nav-item(data-toggle='tooltip', data-placement='right', title='Groups')
+              a.nav-link.nav-link-collapse.collapsed(data-toggle='collapse', href='#collapseMulti', data-parent='#exampleAccordion')
+                i.fa.fa-fw.fa-sitemap
+                span.nav-link-text
+                  | Groups
+              ul#collapseMulti.sidenav-second-level.collapse
+                li
+                  a(href='#') English groups
+                li
+                  a(href='#') German groups
+                li
+                  a(href='#') Spanish groups
+            li.nav-item(data-toggle='tooltip', data-placement='right', title='Files')
+              a.nav-link(href='charts.html')
+                i.fa.fa-fw.fa-file
+                span.nav-link-text
+                  | Files
+  
+          // Messages and alerts notification
+          ul.navbar-nav.sidenav-toggler
+            li.nav-item
+              a#sidenavToggler.nav-link.text-center
+                i.fa.fa-fw.fa-angle-left
+          ul.navbar-nav.ml-auto
+            // li.nav-item.dropdown
+              a#messagesDropdown.nav-link.dropdown-toggle.mr-lg-2(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                i.fa.fa-fw.fa-envelope
+                span.d-lg-none
+                  | Messages
+                  span.badge.badge-pill.badge-primary 12 New
+                span.indicator.text-primary.d-none.d-lg-block
+                  i.fa.fa-fw.fa-circle
+              .dropdown-menu.bg-light(aria-labelledby='messagesDropdown')
+                h6.dropdown-header New Messages:
+                .dropdown-divider
+                a.dropdown-item(href='#')
+                  strong David Miller
+                  span.small.float-right.text-muted 11:21 AM
+                  .dropdown-message.small
+                    | Hey there! This new version of SB Admin is pretty awesome! These messages clip off when they reach the end of the box so they don't overflow over to the sides!
+                .dropdown-divider
+                a.dropdown-item(href='#')
+                  strong Jane Smith
+                  span.small.float-right.text-muted 11:21 AM
+                  .dropdown-message.small
+                    | I was wondering if you could meet for an appointment at 3:00 instead of 4:00. Thanks!
+                .dropdown-divider
+                a.dropdown-item(href='#')
+                  strong John Doe
+                  span.small.float-right.text-muted 11:21 AM
+                  .dropdown-message.small
+                    | I've sent the final files over to you for review. When you're able to sign off of them let me know and we can discuss distribution.
+                .dropdown-divider
+                a.dropdown-item.small(href='#')
+                  | View all messages
+            // li.nav-item.dropdown
+              a#alertsDropdown.nav-link.dropdown-toggle.mr-lg-2(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                i.fa.fa-fw.fa-bell
+                span.d-lg-none
+                  | Alerts
+                  span.badge.badge-pill.badge-warning 6 New
+                span.indicator.text-warning.d-none.d-lg-block
+                  i.fa.fa-fw.fa-circle
+              .dropdown-menu.bg-light(aria-labelledby='alertsDropdown')
+                h6.dropdown-header New Alerts:
+                .dropdown-divider
+                a.dropdown-item(href='#')
+                  span.text-success
+                    strong
+                      i.fa.fa-long-arrow-up.fa-fw
+                      | Status Update
+                  span.small.float-right.text-muted 11:21 AM
+                  .dropdown-message.small This is an automated server response message. All systems are online.
+                .dropdown-divider
+                a.dropdown-item(href='#')
+                  span.text-danger
+                    strong
+                      i.fa.fa-long-arrow-down.fa-fw
+                      | Status Update
+                  span.small.float-right.text-muted 11:21 AM
+                  .dropdown-message.small This is an automated server response message. All systems are online.
+                .dropdown-divider
+                a.dropdown-item(href='#')
+                  span.text-success
+                    strong
+                      i.fa.fa-long-arrow-up.fa-fw
+                      | Status Update
+                  span.small.float-right.text-muted 11:21 AM
+                  .dropdown-message.small This is an automated server response message. All systems are online.
+                .dropdown-divider
+                a.dropdown-item.small(href='#')
+                  | View all alerts
+            li.nav-item
+              form.form-inline.my-2.my-lg-0.mr-lg-2
+                #search_btn.input-group
+                  input.form-control(type='text', placeholder='Search for...')
+                  span.input-group-btn
+                    button.btn.btn-primary(type='button')
+                      i.fa.fa-search
+            
+            // Logout button
+            li.nav-item
+              a.nav-link(href='/logout')
+                i.fa.fa-fw.fa-sign-out
+                span#logout_btn
+                  | Logout
+  -if (user.role == "student")                
+    // Navigation of user profile page
+    nav#mainNav.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top
+      nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top.navbar-shrink
+        a.navbar-brand.js-scroll-trigger(href='/') MultiLingua School
+        button.navbar-toggler.navbar-toggler-right.bg-dark(type='button', data-toggle='collapse', data-target='#navbarResponsive', aria-controls='navbarResponsive', aria-expanded='false', aria-label='Toggle navigation')
+          span.navbar-toggler-icon
+        #navbarResponsive.collapse.navbar-collapse
+          ul#exampleAccordion.navbar-nav.navbar-sidenav
+            li.nav-item(data-toggle='tooltip', data-placement='right', title='User account')
+              a.nav-link(href='/user_account')
+                i.fa.fa-fw.fa-dashboard
+                span.nav-link-text
+                  | Account Settings
+            li.nav-item(data-toggle='tooltip', data-placement='right', title='Supporting files')
+              a.nav-link(href='/files')
+                i.fa.fa-fw.fa-area-chart
+                span.nav-link-text
+                  | Supporting files
+            // li.nav-item(data-toggle='tooltip', data-placement='right', title='User Calendar')
+              a.nav-link(href='/calendar')
+                i.fa.fa-fw.fa-table
+                span.nav-link-text
+                  | Calendar
+            // li.nav-item(data-toggle='tooltip', data-placement='right', title='Communicator')
+              a.nav-link(href='/user_communicator')
+                i.fa.fa-fw.fa-wrench
+                span.nav-link-text
+                  | Ask Teacher
+            li.nav-item(data-toggle='tooltip', data-placement='right', title='Homework')
+              a.nav-link(href='/homework')
+                i.fa.fa-fw.fa-file
+                span.nav-link-text
+                  | Homework
+  
+          // Messages and alerts notification
+          ul.navbar-nav.sidenav-toggler
+            li.nav-item
+              a#sidenavToggler.nav-link.text-center
+                i.fa.fa-fw.fa-angle-left
+          ul.navbar-nav.ml-auto
+            // li.nav-item.dropdown
+              a#messagesDropdown.nav-link.dropdown-toggle.mr-lg-2(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                i.fa.fa-fw.fa-envelope
+                span.d-lg-none
+                  | Messages
+                  span.badge.badge-pill.badge-primary 12 New
+                span.indicator.text-primary.d-none.d-lg-block
+                  i.fa.fa-fw.fa-circle
+              .dropdown-menu.bg-light(aria-labelledby='messagesDropdown')
+                h6.dropdown-header New Messages:
+                .dropdown-divider
+                a.dropdown-item(href='#')
+                  strong David Miller
+                  span.small.float-right.text-muted 11:21 AM
+                  .dropdown-message.small
+                    | Hey there! This new version of SB Admin is pretty awesome! These messages clip off when they reach the end of the box so they don't overflow over to the sides!
+                .dropdown-divider
+                a.dropdown-item(href='#')
+                  strong Jane Smith
+                  span.small.float-right.text-muted 11:21 AM
+                  .dropdown-message.small
+                    | I was wondering if you could meet for an appointment at 3:00 instead of 4:00. Thanks!
+                .dropdown-divider
+                a.dropdown-item(href='#')
+                  strong John Doe
+                  span.small.float-right.text-muted 11:21 AM
+                  .dropdown-message.small
+                    | I've sent the final files over to you for review. When you're able to sign off of them let me know and we can discuss distribution.
+                .dropdown-divider
+                a.dropdown-item.small(href='#')
+                  | View all messages
+            // li.nav-item.dropdown
+              a#alertsDropdown.nav-link.dropdown-toggle.mr-lg-2(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                i.fa.fa-fw.fa-bell
+                span.d-lg-none
+                  | Alerts
+                  span.badge.badge-pill.badge-warning 6 New
+                span.indicator.text-warning.d-none.d-lg-block
+                  i.fa.fa-fw.fa-circle
+              .dropdown-menu.bg-light(aria-labelledby='alertsDropdown')
+                h6.dropdown-header New Alerts:
+                .dropdown-divider
+                a.dropdown-item(href='#')
+                  span.text-success
+                    strong
+                      i.fa.fa-long-arrow-up.fa-fw
+                      | Status Update
+                  span.small.float-right.text-muted 11:21 AM
+                  .dropdown-message.small This is an automated server response message. All systems are online.
+                .dropdown-divider
+                a.dropdown-item(href='#')
+                  span.text-danger
+                    strong
+                      i.fa.fa-long-arrow-down.fa-fw
+                      | Status Update
+                  span.small.float-right.text-muted 11:21 AM
+                  .dropdown-message.small This is an automated server response message. All systems are online.
+                .dropdown-divider
+                a.dropdown-item(href='#')
+                  span.text-success
+                    strong
+                      i.fa.fa-long-arrow-up.fa-fw
+                      | Status Update
+                  span.small.float-right.text-muted 11:21 AM
+                  .dropdown-message.small This is an automated server response message. All systems are online.
+                .dropdown-divider
+                a.dropdown-item.small(href='#')
+                  | View all alerts
+            li.nav-item
+              form.form-inline.my-2.my-lg-0.mr-lg-2
+                #search_btn.input-group
+                  input.form-control(type='text', placeholder='Search for...')
+                  span.input-group-btn
+                    button.btn.btn-primary(type='button')
+                      i.fa.fa-search
+                      
+            // Logout button
+            li.nav-item
+              a.nav-link(href='/logout')
+                i.fa.fa-fw.fa-sign-out
+                span#logout_btn
+                  | Logout   

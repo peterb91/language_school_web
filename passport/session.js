@@ -3,12 +3,13 @@ var passport      = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
 passport.serializeUser(function(user, done) {
-  done(null, user.id);
+  done(null, user);
 });
 
-passport.deserializeUser(function(id, done) {
-  db.query("SELECT * FROM students WHERE id = ? ",
-    [id], function(err, rows) {
-        done(err, rows[0]);
+passport.deserializeUser(function(user, done) {
+  db.query("SELECT * FROM users WHERE id = ? ",
+    [user.id], function(err, User) {
+      user = User[0];
+        done(err, user);
     });
 });

@@ -15,10 +15,10 @@ block content
           form(method="post", action="/login")
             .form-group
               label(for='exampleInputEmail1') Email address
-              input#exampleInputEmail1.form-control(name="email", type='email', aria-describedby='emailHelp', placeholder='Enter email')
+              input#exampleInputEmail1.form-control(name="email", type='email', aria-describedby='emailHelp', placeholder='Enter email', required)
             .form-group
               label(for='exampleInputPassword1') Password
-              input#exampleInputPassword1.form-control(name="password", type='password', placeholder='Password')
+              input#exampleInputPassword1.form-control(name="password", type='password', placeholder='Password (4 - 16 char.)', minlength='4', maxlength='16', required)
             .form-group
               .form-check
                 label.form-check-label

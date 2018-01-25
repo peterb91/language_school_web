@@ -9,12 +9,12 @@ router.get('/', function(req, res, next) {
 
 /* Process POST request from login form */
 router.post('/', 
-  passport.authenticate('local-login', { successRedirect: '/user_profile', failureRedirect: '/login', failureFlash: true }),
+  passport.authenticate('local-login', { successRedirect: '/profile', failureRedirect: '/login', failureFlash: true}),
   function(req, res) {
-    console.log("hello");
+    console.log("Hello " + user.firstName + "!");
 
     if (req.body.remember) {
-      req.session.cookie.maxAge = 1000 * 60 * 3;
+      req.session.cookie.maxAge = 1000 * 60 * 30;
     } else {
       req.session.cookie.expires = false;
     }

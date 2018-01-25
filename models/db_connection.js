@@ -19,7 +19,7 @@ db.connect(function(err) {
         if (err) throw err;
         console.log("Database changed to ml_school");
     });
-    db.query('CREATE TABLE IF NOT EXISTS students \
+    db.query('CREATE TABLE IF NOT EXISTS users \
     (id INT  NOT NULL AUTO_INCREMENT, \
     PRIMARY KEY(id), \
     firstName VARCHAR(50), \
@@ -28,10 +28,10 @@ db.connect(function(err) {
     password VARCHAR(255), \
     language VARCHAR(30), \
     level VARCHAR(2), \
-    status VARCHAR(10) DEFAULT "accepted")', 
+    role VARCHAR(10))', 
     function (err, result) {
         if (err) throw err;
-        console.log("Table students created...");
+        console.log("Table users created...");
     });
     //db.end();
 });

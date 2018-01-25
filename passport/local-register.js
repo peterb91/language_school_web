@@ -9,7 +9,7 @@ module.exports = function(salt) {
     passwordField : 'password',
     passReqToCallback : true
   }, function(req, email, password, done) {
-    db.query("SELECT * FROM students WHERE email = ?",
+    db.query("SELECT * FROM users WHERE email = ?",
       [email],
       function(err, rows) {
         if (err) {
@@ -17,26 +17,28 @@ module.exports = function(salt) {
         }
 
         if (rows.length) {
+          console.log('Email: %s is already taken.', email);
           return done(null, false, req.flash('registerMessage', 'Sorry! That email is already taken.'));
         } else {
-          var User = {
+          var user = {
             firstName: req.body.first_name,
             lastName: req.body.last_name,
             email: email,
             password: bcrypt.hashSync(password, salt),
             language: req.body.language,
-            level: req.body.level
+            level: req.body.level,
+            role: 'student'
           };
 
-          var insertQuery = "INSERT INTO students (firstName, lastName, email, password, language, level) VALUES (?,?,?,?,?,?)";
+          var insertQuery = "INSERT INTO users (firstName, lastName, email, password, language, level, role) VALUES (?,?,?,?,?,?,?)";
 
-          db.query(insertQuery, [User.firstName, User.lastName, User.email, User.password, User.language, User.level],
+          db.query(insertQuery, [user.firstName, user.lastName, user.email, user.password, user.language, user.level, user.role],
             function(err, rows) {
               if (err) throw err;
 
-              User.id = rows.insertId;
-              console.log("New record inserted")
-              return done(null, User);
+              user.id = rows.insertId;
+              console.log("New record inserted to table users");
+              return done(null, user);
           });
         }
       })
