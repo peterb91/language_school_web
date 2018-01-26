@@ -1,5 +1,8 @@
 extends layout
 
+script
+  include ../public/javascripts/script.js
+
 block navigation
   include navbar_profile.jade
 
@@ -11,67 +14,71 @@ block content
           li.breadcrumb-item Accout Page
             a(href='#') 
           li.breadcrumb-item.active Account
-      h1 Edit Profile
-      .row(style="min-height: 992px;")
-        // left column
-        .col-md-3
-          .text-center
-            img.avatar.img-circle(src='//placehold.it/100', alt='avatar')
-            h6 Upload a different photo...
-            input.form-control(type='file')
-        // edit form column
-        .col-md-9.personal-info
-          .alert.alert-info.alert-dismissable
-            a.panel-close.close(data-dismiss='alert') ×
-            i.fa.fa-coffee
-            |           Please enter new value and press 
-            strong "Save Changes"
-            | to update your personal info or credentials.
-          h3 Personal info
-          form.form-horizontal(role='form')
+      .card.mx-auto.edit_profile
+        .card-header.bg-dark.mx-auto.w-100
+          h1.text-center
+            kbd(style="background:  #fec503; color: #000000") Edit Profile
+        //.row(style="min-height: 992px;")
+            // left column
+            //.col-md-3
+              .text-center
+                img.avatar.img-circle(src='//placehold.it/100', alt='avatar')
+                h6 Upload a different photo...
+                input.form-control(type='file')
+            // edit form column
+            //.col-md-12.personal-info
+              //.alert.alert-info.alert-dismissable
+                a.panel-close.close(data-dismiss='alert') ×
+                i.fa.fa-coffee
+                |           Please enter new value and press 
+                strong "Save Changes"
+                | to update your personal info or credentials.
+        .card-body.bg-light.mx-auto.w-100
+          h3 
+            kbd Personal info
+          form.form-horizontal(role='form', action='/account', method='post')
             .form-group
-              label.col-lg-3.control-label First name:
-              .col-lg-8
-                input.form-control(value='Jane', type='text')
-            .form-group
-              label.col-lg-3.control-label Last name:
-              .col-lg-8
-                input.form-control(value='Bishop', type='text')
-            .form-group
-              label.col-lg-3.control-label Email:
-              .col-lg-8
-                input.form-control(value='janesemail@gmail.com', type='text')
-            .form-group
-              label.col-lg-3.control-label Time Zone:
-              .col-lg-8
-                .ui-select
-                  select#user_time_zone.form-control
-                    option(value='Hawaii') (GMT-10:00) Hawaii
-                    option(value='Alaska') (GMT-09:00) Alaska
-                    option(value='Pacific Time (US & Canada)') (GMT-08:00) Pacific Time (US & Canada)
-                    option(value='Arizona') (GMT-07:00) Arizona
-                    option(value='Mountain Time (US & Canada)') (GMT-07:00) Mountain Time (US & Canada)
-                    option(value='Central Time (US & Canada)', selected='selected') (GMT-06:00) Central Time (US & Canada)
-                    option(value='Eastern Time (US & Canada)') (GMT-05:00) Eastern Time (US & Canada)
-                    option(value='Indiana (East)') (GMT-05:00) Indiana (East)
-            h3 Credentials
-            .form-group
-              label.col-md-3.control-label Username:
-              .col-md-8
-                input.form-control(value='janeuser', type='text')
-            .form-group
-              label.col-md-3.control-label Password:
-              .col-md-8
-                input.form-control(value='11111122333', type='password')
-            .form-group
-              label.col-md-3.control-label Confirm password:
-              .col-md-8
-                input.form-control(value='11111122333', type='password')
-            .form-group
-              label.col-md-3.control-label
-              .col-md-8
-                input.btn.btn-primary(value='Save Changes', type='button')
-                // span
-                // input.btn.btn-default(value='Cancel', type='reset')
-    
-    
+              .form-row.mb-2
+                .col-md-4 
+                  label.control-label First name:
+                .col-md-8
+                  input.form-control(name="first_name", value= user.firstName, type='text', maxlength='50', required)
+              .form-row.mb-2
+                .col-md-4 
+                  label.control-label Last name:
+                .col-md-8
+                  input.form-control(name="last_name", value= user.lastName, type='text', maxlength='50', required)
+              .form-row.mb-2
+                .col-md-4 
+                  label.control-label Language:
+                .col-md-8
+                  input.form-control(name="language", value= user.language, type='text', maxlength='30', required)
+              .form-row.mb-2
+                .col-md-4 
+                  label.control-label Level:
+                .col-md-8
+                  input.form-control(name="level", value= user.level, type='text', minlength='2', maxlength='2', pattern='[A-Z1-2]{2}', title="Allowed input: [A-Z][1-2], eg. A1", required)
+            .form-group  
+              h3 
+                kbd Credentials
+              .form-row.mb-2
+                .col-md-4
+                  label.control-label Email:
+                .col-md-8
+                  input.form-control(name="email", value= user.email, type='email', maxlength='120', required)
+              .form-row.mb-2
+                .col-md-4
+                  label.control-label Password:
+                  a#password_edit(style="color: #fec503") 
+                    u (Edit)
+                .col-md-8
+                  input#password.form-control(name="password", type='password', minlength='4', placeholder='Enter new password', maxlength='16', required, disabled)
+              .form-row.mb-2
+                .col-md-4
+                  label.control-label Confirm password:
+                .col-md-8
+                  input#confirm_password.form-control(name="confirm_password", type='password', placeholder='Confirm new password', required, disabled)
+            a.d-block.small.mb-3 *Click on 'Edit' to change password
+            button.btn.btn-primary.btn-block(type='submit') Save Changes
+                  // span
+                  // input.btn.btn-default(value='Cancel', type='reset')

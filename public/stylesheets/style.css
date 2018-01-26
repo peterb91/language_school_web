@@ -61,3 +61,7 @@ a.dropdown-item:hover {
   margin-top: 100px;
   margin-bottom: auto;
   width: 100%;}
+
+  .edit_profile {
+    max-width: 40%;
+  }

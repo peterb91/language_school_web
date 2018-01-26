@@ -5,7 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressValidator = require('express-validator');
-
+var methodOverride = require('method-override')
+ 
 // Session package
 var session = require('express-session');
 
@@ -22,7 +23,7 @@ var intensive = require('./routes/intensive');
 var profile = require('./routes/profile');
 // var user_profile = require('./routes/user_profile');
 // var admin_profile = require('./routes/admin_profile');
-var user_account = require('./routes/user_account');
+var account = require('./routes/account');
 var files = require('./routes/files');
 // var calendar = require('./routes/calendar');
 // var user_communicator = require('./routes/user_communicator');
@@ -68,6 +69,34 @@ app.use(function(req, res, next) {
   next();
 });
 
+// Using custom logic to override method
+app.use(methodOverride(function (req, res) {
+  if (req.body && typeof(req.body) === 'object' && '_method' in req.body) {
+    // look in urlencoded POST bodies and delete it
+    var method = req.body._method
+    delete req.body._method
+    return method
+  }
+}))
+
+// Storing date of session
+app.all('*', function findLastVisit(req, res, next) {
+  if (req.session.visited) {
+    req.lastVisit = req.session.visited;
+  }
+  // req.session.visited = Date.now();
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth()+1; 
+  var yyyy = today.getFullYear();
+  if (mm < 10) {
+    req.session.visited = dd + '/' + '0' + mm + '/' + yyyy;
+  } else {
+    req.session.visited = dd + '/' + mm + '/' + yyyy;
+  }
+  next();
+});
+
 // Links between requested url and routing files
 app.use('/', index);
 app.use('/regular', regular);
@@ -76,7 +105,7 @@ app.use('/intensive', intensive);
 app.use('/profile', profile);
 // app.use('/user_profile', user_profile);
 // app.use('/admin_profile', admin_profile);
-app.use('/user_account', user_account);
+app.use('/account', account);
 app.use('/files', files);
 // app.use('/calendar', calendar);
 // app.use('/user_communicator', user_communicator);

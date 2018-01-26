@@ -19,10 +19,10 @@ block content
               .form-row
                 .col-md-6
                   label(for='exampleInputName') First name
-                  input#exampleInputName.form-control(name="first_name", type='text', aria-describedby='nameHelp', placeholder='Enter first name', required)
+                  input#exampleInputName.form-control(name="first_name", type='text', aria-describedby='nameHelp', placeholder='Enter first name', maxlength='50', required)
                 .col-md-6
                   label(for='exampleInputLastName') Last name
-                  input#exampleInputLastName.form-control(name="last_name", type='text', aria-describedby='nameHelp', placeholder='Enter last name', required)
+                  input#exampleInputLastName.form-control(name="last_name", type='text', aria-describedby='nameHelp', placeholder='Enter last name', maxlength='50', required)
               .form-row
                 .col-md-6
                   label(for='languageInput') Language
@@ -43,7 +43,7 @@ block content
               | Register an Account      
             .form-group
               label(for='exampleInputEmail1') Email address
-              input#exampleInputEmail1.form-control(name="email", type='email', aria-describedby='emailHelp', placeholder='Enter email', required)
+              input#exampleInputEmail1.form-control(name="email", type='email', aria-describedby='emailHelp', placeholder='Enter email', maxlength='120', required)
             .form-group
               .form-row
                 .col-md-6
@@ -55,4 +55,4 @@ block content
             button.btn.btn-primary.btn-block(type="submit", href='/login') Register
           .text-center
             a.d-block.small.mt-3(href='/login') Login Page
-            a.d-block.small(href='/forgot_password') Forgot Password?
+            // a.d-block.small(href='/forgot_password') Forgot Password?
