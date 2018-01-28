@@ -18,8 +18,7 @@ router.get('/', isLoggedIn, function(req, res, next) {
 });
 
 // DELETE STUDENT
-router.delete('/delete/(:id)', function(req, res, next) {
-    var user = { id: req.params.id }
+router.delete('/delete/(:firstName)/(:lastName)/(:id)', function(req, res, next) {
     
     db.query('DELETE FROM users WHERE id = ' + req.params.id, function(err, result) {
             //if(err) throw err
@@ -30,7 +29,7 @@ router.delete('/delete/(:id)', function(req, res, next) {
                 res.redirect('/students');
             } else {
                 console.log("User deleted successfully");
-                req.flash('success', 'Student with id= ' + req.params.id + ' deleted successfully!');
+                req.flash('success', 'Student: ' + req.params.firstName + " " +req.params.lastName + ', deleted successfully!');
                 // redirect to students list
                 res.redirect('/students');
             }

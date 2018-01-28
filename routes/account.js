@@ -8,21 +8,28 @@ require('./routes.js')();
 
 /* GET regular course page. */
 router.get('/', isLoggedIn, function(req, res, next) {
-  res.render('account', { title: 'MultiLingua - user account', user: req.user });
+  res.render('account', { title: 'MultiLingua - user account', user: req.user, messages: req.flash() });
 });
 
 router.post('/', function(req, res, next) {
 
   //Server side request validation
-  req.assert('first_name', 'First name is required').notEmpty();
-  req.assert('last_name', 'Last Name is required').notEmpty();
-  req.assert('language', 'Lnguage is required').notEmpty();
-  req.assert('level', 'Level is required').notEmpty();
-  req.assert('email', 'A valid email is required').isEmail();
+  req.checkBody('first_name', 'First name is required').notEmpty().trim();
+  req.checkBody('last_name', 'Last Name is required').notEmpty().trim();
+  req.checkBody('language', 'Lnguage is required').notEmpty().trim();
+  req.checkBody('level', 'Level is required').notEmpty();
+  req.checkBody('level', 'Level should consist of one capital letter A-C and one digit 1-2').trim().matches(/[A-C][1-2]/);
+  req.checkBody('email', 'Email is required.').notEmpty().trim();
+  req.checkBody('email', 'Invalid email format.').isEmail().trim();
+  if (req.body.password) {
+    req.checkBody('password', 'Password is required.').notEmpty();
+   req.checkBody('password', 'The password length must be between 4 and 16.').trim().isLength({min: 4, max: 16});
+   req.checkBody('confirm_password', 'Confirm password is required').notEmpty();
+   req.checkBody('confirm_password', 'Passwords do not match').equals(req.body.password);
+  }
 
   var errors = req.validationErrors()
-  console.log(req.user.password);
-  console.log(req.body.password);
+
   if (!req.body.password) {
     var password = req.user.password;
   } else {

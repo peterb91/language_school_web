@@ -14,14 +14,22 @@ block content
         .row
           .col-lg-12
             h4 Select files you want to send to your teacher
-            form(method='post', enctype='multipart/form-data')
-              input#files(type='file', name='files', multiple='multiple')
+            -if(messages.error)
+                div.alert.alert-danger 
+                  | !{messages.error}
+            -if(messages.success)
+              div.alert.alert-success 
+                | !{messages.success}
+            form#uploadForm(method='post', enctype='multipart/form-data', action="/homework/upload/" + user.firstName +"/" + user.lastName, ref='uploadForm')
+              input#files(type='file', name='sampleFile')
+              //input(type="hidden", name="firstName" value= user.firstName)
+              //input(type="hidden", name="lastName" value= user.lastName)
               p(style='text-align: left; margin-top: 20px;')
                 input.btn.btn-lg.btn-primary(type='submit', value='Upload Files')
-        // you need to include the ShieldUI CSS and JS assets in order for the Upload widget to work
-link(rel='stylesheet', type='text/css', href='http://www.shieldui.com/shared/components/latest/css/light-bootstrap/all.min.css')
-script(type='text/javascript', src='http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js')
-script(type='text/javascript').
+//        // you need to include the ShieldUI CSS and JS assets in order for the Upload widget to work
+ link(rel='stylesheet', type='text/css', href='http://www.shieldui.com/shared/components/latest/css/light-bootstrap/all.min.css')
+ script(type='text/javascript', src='http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js')
+ script(type='text/javascript').
   jQuery(function ($) {
       $("#files").shieldUpload();
       });
