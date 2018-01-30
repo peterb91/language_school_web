@@ -19,7 +19,7 @@ router.post('/', function(req, res, next) {
         from: req.body.email,
         to: 'multilingua2013@gmail.com',
         subject:'Email through contact form Multilingua School',
-        text: 'You have received a new message from your website contact form.\n\nHere are the details:\n\nEmail: ' 
+        text: 'You have received a new message from your website contact form.\n\nHere are the details:\n\nName: ' + req.body.name + '\nEmail: ' 
         + req.body.email + '\nPhone: ' + req.body.phone + '\nMessage: ' + req.body.message
     };
   
