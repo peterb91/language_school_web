@@ -1,6 +1,8 @@
 extends layout
 
 block content
+  script
+    include ../public/javascripts/script.js
   body#page-top.register_body.background-cover
     .container(style="min-height: 800px")
       .card.card-register.mx-auto.register_window
@@ -8,15 +10,19 @@ block content
           | Register for a course
           a.navbar-brand.js-scroll-trigger.float-right.pt-0.pb-0(href='/', style="font-family: 'Kaushan Script','Helvetica Neue',Helvetica,Arial,cursive;") MultiLingua School
         .card-body.bg-light
-          form(method="post", action="")
+          //show any messages that come back with authentication
+          -if(message.length > 0)
+            div.alert.alert-danger 
+              | !{message}
+          form(method="post", action="/register")
             .form-group
               .form-row
                 .col-md-6
                   label(for='exampleInputName') First name
-                  input#exampleInputName.form-control(name="first_name", type='text', aria-describedby='nameHelp', placeholder='Enter first name')
+                  input#exampleInputName.form-control(name="first_name", type='text', aria-describedby='nameHelp', placeholder='Enter first name', required)
                 .col-md-6
                   label(for='exampleInputLastName') Last name
-                  input#exampleInputLastName.form-control(name="last_name", type='text', aria-describedby='nameHelp', placeholder='Enter last name')
+                  input#exampleInputLastName.form-control(name="last_name", type='text', aria-describedby='nameHelp', placeholder='Enter last name', required)
               .form-row
                 .col-md-6
                   label(for='languageInput') Language
@@ -37,17 +43,16 @@ block content
               | Register an Account      
             .form-group
               label(for='exampleInputEmail1') Email address
-              input#exampleInputEmail1.form-control(name="login", type='email', aria-describedby='emailHelp', placeholder='Enter email')
+              input#exampleInputEmail1.form-control(name="email", type='email', aria-describedby='emailHelp', placeholder='Enter email', required)
             .form-group
               .form-row
                 .col-md-6
                   label(for='exampleInputPassword1') Password
-                  input#exampleInputPassword1.form-control(name="password", type='password', placeholder='Password')
+                  input#password.form-control(name="password", type='password', placeholder='Password (4 - 16 char.)', minlength='4', maxlength='16', required)
                 .col-md-6
                   label(for='exampleConfirmPassword') Confirm password
-                  input#exampleConfirmPassword.form-control(name="confirm_password", type='password', placeholder='Confirm password')
-            a.btn.btn-primary.btn-block(href='login.html') Register
+                  input#confirm_password.form-control(name="confirm_password", type='password', placeholder='Confirm password', required)
+            button.btn.btn-primary.btn-block(type="submit", href='/login') Register
           .text-center
             a.d-block.small.mt-3(href='/login') Login Page
             a.d-block.small(href='/forgot_password') Forgot Password?
-

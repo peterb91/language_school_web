@@ -26,6 +26,16 @@ body#page-top
             a.nav-link.js-scroll-trigger(href='/#team') Team
           li.nav-item
             a.nav-link.js-scroll-trigger(href='/#contact') Contact
-          li.nav-item
-            a.nav-link.js-scroll-trigger(href='/login') 
-              span#signin_btn Log in
+          -if (!user)
+            li.nav-item
+              a.nav-link.js-scroll-trigger(href='/login') 
+                span#signin_btn Log in
+          -if (user)
+            li.nav-item
+              a.nav-link.js-scroll-trigger(href='/profile')
+                i.fa.fa-user
+                  span(style="font-family: Montserrat,'Helvetica Neue',Helvetica,Arial,sans-serif;")  Profile
+            li.nav-item
+              a.nav-link.js-scroll-trigger(href='/logout') 
+                i.fa.fa-fw.fa-sign-out 
+                span(style="font-family: Montserrat,'Helvetica Neue',Helvetica,Arial,sans-serif;") Logout

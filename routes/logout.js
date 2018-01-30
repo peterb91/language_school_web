@@ -2,9 +2,10 @@ var express = require('express');
 var router = express.Router();
 require('./routes.js')();
 
-/* GET regular course page. */
+/* GET homepage page after logout */
 router.get('/', isLoggedIn, function(req, res, next) {
-  res.render('homework', { title: 'MultiLingua - homework' });
+    req.logout();
+    res.redirect('/');
 });
 
 module.exports = router;
