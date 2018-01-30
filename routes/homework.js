@@ -13,18 +13,24 @@ router.post('/upload/(:firstName)/(:lastName)', isLoggedIn, function(req, res, n
     "firstName": req.params.firstName,
     "lastName": req.params.lastName
   }
-  console.log("#############################" + req.files.sampleFile.name);
   if (!req.files) {
     console.log("No files were uploaded");
     req.flash("error", "No file selected to upload");
     res.render('homework', { title: 'MultiLingua - homework', messages: req.flash(), user: req.user });
   } else {
-    // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
-    let sampleFile = req.files.sampleFile;
-    var myFile = new Buffer.concat(sampleFile);
+    console.log("#############################" + req.files.myFile.name);
+    // The name of the input field (i.e. "myFile") is used to retrieve the uploaded file
+    var file = req.files.myFile;
+    file.mv('/upload/' + file.name, function(err) {
+      //if (err) {
+        //return res.status(500).send(err);
+      //}
+   
+        console.log('File ' + file.name + ' uploaded!');
+  });
     var insertQuery = "INSERT INTO files (firstName, lastName, file) VALUES (?,?,?)";
 
-    db.query(insertQuery, [student.firstName, student.lastName, myFile],
+    db.query(insertQuery, [student.firstName, student.lastName, file.data],
       function(err, rows) {
         if (err) {
           console.log(err);
