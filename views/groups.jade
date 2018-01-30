@@ -1,0 +1,61 @@
+extends layout
+
+block navigation
+  include navbar_profile.jade
+
+block content
+    .content-wrapper
+      .container-fluid
+        // Breadcrumbs
+        ol.breadcrumb
+          li.breadcrumb-item !{group.language}
+            a(href='#') 
+          li.breadcrumb-item.active Level !{group.level}
+        // List of files to download
+        .row(style="min-height: 992px;")
+          .card.mb-auto.mx-auto(style="min-width: 800px;")
+            .card-header.bg-dark.text-white
+              i.fa.fa-table
+              |  !{group.language} level !{group.level} - list
+            .card-body.bg-light
+              -if(messages.error)
+                div.alert.alert-danger 
+                  | !{messages.error}
+              -if(messages.success)
+                div.alert.alert-success 
+                  | !{messages.success}
+              .table-responsive
+              table#dataTable.table.table-bordered(width='100%', cellspacing='0')
+                thead
+                  tr
+                    th No
+                    th Frst name
+                    th Last name 
+                    th Email
+                    th Delete
+                tfoot
+                  tr
+                    th No
+                    th Frst name
+                    th Last name 
+                    th Email
+                    th Delete
+                tbody
+                  -if (data) 
+                    each user in data
+                      tr
+                        td !{data.indexOf(user) + 1}
+                        td !{user.firstName}
+                        td !{user.lastName}
+                        td !{user.email}
+                        td
+                          div(style="float:left")
+                            form(method="post", action="/groups/"+group.language+"/"+group.level+"/"+user.id, style="float:right")
+                              input.btn.btn-primary(type="submit", name="delete", value="Delete" onClick="return confirm('Are you sure you want to delete?')")
+                              input(type="hidden", name="_method" value="DELETE")
+                //.card-footer.small.text-muted.bg-dark
+                  | Updated yesterday at 11:59 PM
+            
+      
+  
+  

@@ -5,6 +5,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressValidator = require('express-validator');
+var methodOverride = require('method-override');
+var fileUpload = require('express-fileupload');
+var nodemailer = require('nodemailer');
 
 // Session package
 var session = require('express-session');
@@ -20,21 +23,16 @@ var regular = require('./routes/regular');
 var business = require('./routes/business');
 var intensive = require('./routes/intensive');
 var profile = require('./routes/profile');
-// var user_profile = require('./routes/user_profile');
-// var admin_profile = require('./routes/admin_profile');
-var user_account = require('./routes/user_account');
+var account = require('./routes/account');
 var files = require('./routes/files');
 // var calendar = require('./routes/calendar');
-// var user_communicator = require('./routes/user_communicator');
 var homework = require('./routes/homework');
 var students = require('./routes/students');
-var eng_group = require('./routes/eng_group');
-var ger_group = require('./routes/ger_group');
-var spa_group = require('./routes/spa_group');
-// var admin_communicator = require('./routes/admin_communicator');
+var groups = require('./routes/groups');
 var login = require('./routes/login');
 var logout = require('./routes/logout');
 var register = require('./routes/register');
+var mail = require('./routes/mail');
 
 var app = express();
 
@@ -62,9 +60,40 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+app.use(fileUpload({
+  limits: { fileSize: 50 * 1024 * 1024 },
+}));
 
 app.use(function(req, res, next) {
   res.locals.user = req.user;
+  next();
+});
+
+// Using custom logic to override method
+app.use(methodOverride(function (req, res) {
+  if (req.body && typeof(req.body) === 'object' && '_method' in req.body) {
+    // look in urlencoded POST bodies and delete it
+    var method = req.body._method
+    delete req.body._method
+    return method
+  }
+}))
+
+// Storing date of session
+app.all('*', function findLastVisit(req, res, next) {
+  if (req.session.visited) {
+    req.lastVisit = req.session.visited;
+  }
+  // req.session.visited = Date.now();
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth()+1; 
+  var yyyy = today.getFullYear();
+  if (mm < 10) {
+    req.session.visited = dd + '/' + '0' + mm + '/' + yyyy;
+  } else {
+    req.session.visited = dd + '/' + mm + '/' + yyyy;
+  }
   next();
 });
 
@@ -74,21 +103,16 @@ app.use('/regular', regular);
 app.use('/business', business);
 app.use('/intensive', intensive);
 app.use('/profile', profile);
-// app.use('/user_profile', user_profile);
-// app.use('/admin_profile', admin_profile);
-app.use('/user_account', user_account);
+app.use('/account', account);
 app.use('/files', files);
 // app.use('/calendar', calendar);
-// app.use('/user_communicator', user_communicator);
 app.use('/homework', homework);
 app.use('/students', students);
-app.use('/eng_group', eng_group);
-app.use('/ger_group', ger_group);
-app.use('/spa_group', spa_group);
-// app.use('/admin_communicator', admin_communicator);
+app.use('/groups', groups);
 app.use('/login', login);
 app.use('/logout', logout);
 app.use('/register', register);
+app.use('/mail', mail);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

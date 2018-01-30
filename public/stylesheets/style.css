@@ -44,7 +44,7 @@ a.dropdown-item:hover {
 #search_btn {
   padding-top: 8px;}
 
-/* Styling logi template */
+/* Styling login template */
 .login_body, .register_body {
   background-image: url('/images/header-bg.jpg');
   background-repeat: no-repeat;
@@ -61,3 +61,12 @@ a.dropdown-item:hover {
   margin-top: 100px;
   margin-bottom: auto;
   width: 100%;}
+
+  .edit_profile {
+    max-width: 40%;
+  }
+
+/* Style for tables */
+#dataTable {
+  border-color: #9ca0a4;
+}
